@@ -1,0 +1,9 @@
+#champThumbnail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#champThumbnail img.thumb {
+  width: 150px;
+}

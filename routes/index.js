@@ -24,6 +24,7 @@ const upload = multer({
       done(null, 'public/images/') // public/images 폴더 안에 저장
     },
     filename(req, file, done) {
+      console.log(req.body)
       if (!req.body.champName) {
         console.log('champ name is empty')
       }
@@ -104,4 +105,5 @@ router.get('/view', (req, res) => {
 router.get('/controller', (req, res) => {
   res.render('controller')
 })
+
 module.exports = router

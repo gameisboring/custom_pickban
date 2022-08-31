@@ -13,6 +13,13 @@ module.exports = (app) => {
       console.log(msg)
       app.io.emit('chat message', roomName, name, msg)
     })
+
+    socket.on('champ select', (selectedChamp, selectedChampName) => {
+      console.log(selectedChamp)
+      console.log(selectedChampName)
+      app.io.emit('champ select', selectedChamp, selectedChampName)
+    })
   })
+
   return app.io
 }

@@ -1,12 +1,75 @@
 body {
   padding: 50px;
   font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00b7ff;
+  margin: 0;
 }
 
 #addChamp {
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  margin: 0 auto;
+}
+
+#addChamp input {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#addChamp input[type='text'] {
+  border-radius: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0.3rem;
+}
+
+#addChamp input[type='submit'] {
+  font-size: 1.5rem;
+  width: 25%;
+  align-self: center;
+  margin-top: 2.5rem;
+}
+
+#addChamp label {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+#addChamp label[for='champThumb'] {
+  background-color: black;
+  color: white;
+  transition: all 0.3s ease-in;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+}
+
+#addChamp label[for='champThumb'] {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+#previewImg {
+  margin: 0 auto;
+  object-fit: cover;
+  height: 100%;
+}
+
+#output {
+  border-radius: 20px;
+  min-height: 200px;
+  border: 1px solid black;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.imgWrap {
+  overflow: hidden;
+  margin: 0 auto;
+  height: 200px;
 }

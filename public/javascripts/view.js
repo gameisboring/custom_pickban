@@ -13,6 +13,6 @@ const socket = io()
 socket.on('champ select', (image, name) => {
   console.log()
   champThumb.append(
-    `<img class="thumb" src="/images/${image}" alt="${image}" srcset="" /> <span>${name}</span>`
+    `<img class="thumb" src="/images/upload/${image}" alt="${image}" srcset="" /> <span>${name}</span>`
   )
 })

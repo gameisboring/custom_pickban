@@ -23,7 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')))
 const cspOptions = {
   directives: {
     ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-    'script-src': ["'self'", 'data:', 'http://code.jquery.com/'],
+    /** Remove annotation if using jquery CDN
+    'script-src': ["'self'", 'data:', 'http://code.jquery.com/'],*/
   },
 }
 

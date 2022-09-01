@@ -13,6 +13,32 @@
         <option value="" selected>챔피언 선택..</option>
       </select>
       <button id="champSelectBtn">확인</button>
+      <div id="pickban">
+        <div class="blue team">
+          <div class="picks">
+            <% for( let index = 0; index < pick; index++ ) { %>
+            <div class="pick blue <%=index + 1 %>"></div>
+            <% } %>
+          </div>
+          <div class="bans">
+            <% for( let index = 0; index < ban; index++ ) { %>
+            <div class="ban blue <%=index + 1 %>"></div>
+            <% } %>
+          </div>
+        </div>
+        <div class="red team">
+          <div class="picks">
+            <% for( let index = 0; index < pick; index++ ) { %>
+            <div class="pick red <%=index + 1 %>"></div>
+            <% } %>
+          </div>
+          <div class="bans">
+            <% for( let index = 0; index < ban; index++ ) { %>
+            <div class="ban red <%=index + 1 %>"></div>
+            <% } %>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
   <script src="/javascripts/jquery.js"></script>

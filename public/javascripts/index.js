@@ -7,36 +7,42 @@ const champNameInput = $('#champName')
 const previewImg = $('#previewImg')
 const uploadBox = document.querySelector('#output')
 
-var formData = new FormData()
+var preFormData = new FormData()
 
 $('#addChampBtn').on('click', () => {
+  const realFormData = new FormData()
   if (champNameInput.val()) {
-    formData.append('champName', champNameInput.val())
+    realFormData.set('champName', champNameInput.val())
   } else {
     alert('챔피언 이름을 입력해주세요')
     return
   }
-  // 폼데이터 값 출력
-  let entries = formData.entries()
-  for (const pair of entries) {
-    console.log(pair[0] + ', ' + pair[1])
-  }
-  if (!formData.get('champThumb')) {
+  if (!preFormData.get('champThumb')) {
     alert('챔피언 이미지를 업로드 해주세요')
+    return
+  } else {
+    realFormData.set('champThumb', preFormData.get('champThumb'))
   }
 
   fetch('champ', {
     method: 'POST',
     cache: 'no-cache',
-    body: formData,
+    body: realFormData,
   }).then((res) => {
     console.log(res)
     if (res.ok) {
       alert('정보 등록 성공')
+      champThumbInput.val('')
+      previewImg[0].src = '/images/file_upload.svg'
+      preFormData.delete('')
     } else {
       alert('정보 등록 실패')
     }
   })
+})
+
+previewImg.click(() => {
+  champThumbInput.click()
 })
 
 champThumbInput.change(() => {
@@ -85,7 +91,7 @@ function previewFile(dropedFile) {
   )
   if (file) {
     reader.readAsDataURL(file)
-    formData.append('champThumb', file)
+    preFormData.set('champThumb', file)
   }
 }
 
@@ -93,6 +99,7 @@ function isValid(file) {
   if (file.type.indexOf())
     if (file.type.indexOf('image') < 0) {
       alert('이미지 파일만 업로드 가능합니다.')
+
       return false
     }
   if (file.size >= 1024 * 1024 * 5) {

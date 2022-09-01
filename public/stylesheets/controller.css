@@ -1,3 +1,44 @@
+body {
+  margin: 0;
+}
+
 select {
   width: 100px;
+}
+
+#pickban {
+  display: flex;
+  width: 100%;
+  border: 2px solid yellow;
+  justify-content: space-between;
+}
+
+#pickban .team {
+  height: 200px;
+  border: 2px solid red;
+}
+
+#pickban .team .picks,
+#pickban .team .bans {
+  display: flex;
+  gap: 5px;
+}
+
+#pickban .red.team .bans {
+  justify-content: end;
+}
+
+#pickban .team .picks .pick {
+  background-color: lightslategray;
+  width: 100px;
+  height: 100px;
+}
+#pickban .team .bans {
+  margin-top: 30px;
+}
+
+#pickban .team .bans .ban {
+  background-color: lightcoral;
+  width: 70px;
+  height: 70px;
 }

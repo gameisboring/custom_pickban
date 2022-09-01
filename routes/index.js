@@ -1,54 +1,29 @@
-var express = require('express')
-const multer = require('multer')
+const express = require('express')
+const router = express.Router()
 const fs = require('fs')
-const path = require('path')
-var { pool } = require('../db')
-var router = express.Router()
+const { upload } = require('../multer')
+const layoutConfig = require('../data/layout-config.json')
 
 /*
- * directory check and make
+ * check and make
  */
 try {
-  fs.readdirSync('public/images') // 폴더 확인
+  fs.readdirSync('public/images/upload') // 폴더 확인
 } catch (err) {
-  console.error('public/images 폴더가 없습니다. 폴더를 생성합니다.')
-  fs.mkdirSync('public/images') // 폴더 생성
+  console.error('public/images/upload 폴더가 없습니다. 폴더를 생성합니다.')
+  fs.mkdirSync('public/images/upload') // 폴더 생성
 }
 
-/**
- * Multer Upload Middleware
- */
-const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, done) {
-      done(null, 'public/images/') // public/images 폴더 안에 저장
-    },
-    filename(req, file, done) {
-      console.log(req.body)
-      if (!req.body.champName) {
-        console.log('champ name is empty')
-      }
-      done(null, req.body.champName + path.extname(file.originalname)) // 파일이름-날짜.확장자로 저장
-    },
-  }),
-  fileFilter: (req, file, done) => {
-    switch (file.mimetype) {
-      case 'image/png':
-      case 'image/jpeg':
-      case 'image/gif':
-      case 'image/jpg':
-        {
-          console.log('이미지 파일 입니다')
-          done(null, true)
-        }
-        break
-      default:
-        console.log('이미지 파일만 업로드 가능합니다.')
-        done(null, false)
-    }
-  },
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5메가로 용량 제한
-})
+try {
+  fs.readFileSync('data/champ.json')
+} catch (error) {
+  const data = []
+  console.error(
+    'champion.json 파일이 없습니다. 새로운 champion.js 파일을 생성합니다.'
+  )
+  fs.writeFileSync('data/champ.json', JSON.stringify(data)) // 폴더 생성
+}
+const champions = require('../data/champ.json')
 
 /**
  * GET /
@@ -58,30 +33,28 @@ router.get('/', function (req, res, next) {
 })
 
 /**
- * GET /champ
+ * GET /champ : champ.json
  */
 router.get('/champ', async (req, res) => {
-  const query = `SELECT * FROM champion;`
-  const [rows, fields] = await pool.query(query)
-  console.log(rows)
-  res.send(rows)
+  console.log(typeof champions)
+  res.json(champions)
 })
 
 /**
- * POST /chmap
+ * POST /chmap : write json
  */
 router.post(
   '/champ',
   upload.single('champThumb'),
   async function (req, res, next) {
     console.log(req.file.path + ' 에 저장되었습니다')
-
-    const query = `INSERT INTO PICKBAN.champion(ch_name,ch_thumb) VALUES (?,?);`
-    const [rows, fields] = await pool.query(query, [
-      req.body.champName,
-      req.file.filename,
-    ])
-    if (rows.affectedRows === 1) {
+    console.log(req.body.champName)
+    const result = champions.push({
+      champThumb: req.file.filename,
+      champName: req.body.champName,
+    })
+    fs.writeFileSync('data/champ.json', JSON.stringify(champions))
+    if (result > 0) {
       res.status(200)
       res.statusMessage = 'good'
       res.send()
@@ -103,7 +76,10 @@ router.get('/view', (req, res) => {
  * GET /controller
  */
 router.get('/controller', (req, res) => {
-  res.render('controller')
+  res.render('controller', {
+    pick: layoutConfig.layout.pick,
+    ban: layoutConfig.layout.ban,
+  })
 })
 
 module.exports = router

@@ -3,3 +3,4 @@ node_modules
 uploads/*
 public/images/*
 public/javascripts/jquery.js
+public/data/*

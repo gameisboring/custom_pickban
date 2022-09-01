@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   width: 360px;
   margin: 0 auto;
+  text-align: center;
 }
 
 #addChamp input {
@@ -39,13 +40,13 @@ body {
 #addChamp label[for='champThumb'] {
   background-color: black;
   color: white;
-  transition: all 0.3s ease-in;
+  transition: all 0.1s ease-in;
   border: 2px solid black;
   border-radius: 20px;
   padding: 0.3rem 1rem;
 }
 
-#addChamp label[for='champThumb'] {
+#addChamp label[for='champThumb']:hover {
   background-color: white;
   color: black;
   cursor: pointer;
@@ -60,7 +61,7 @@ body {
 #output {
   border-radius: 20px;
   min-height: 200px;
-  border: 1px solid black;
+  border: 2px solid black;
   text-align: center;
   padding: 1rem;
   display: flex;
@@ -72,4 +73,11 @@ body {
   overflow: hidden;
   margin: 0 auto;
   height: 200px;
+  cursor: pointer;
+  opacity: 100%;
+  transition: 0.1s all ease-in;
+}
+
+.imgWrap:hover {
+  opacity: 30%;
 }

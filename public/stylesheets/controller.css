@@ -1,21 +1,36 @@
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('http://fonts.cdnfonts.com/css/clash-display');
+
 body {
+  font-family: 'Clash Display', 'GmarketSansMedium', -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   margin: 0;
 }
 
 select {
   width: 100px;
 }
+#controller {
+  width: 1920px;
+  height: 1080px;
+}
 
 #pickban {
   display: flex;
   width: 100%;
-  border: 2px solid yellow;
   justify-content: space-between;
 }
 
 #pickban .team {
   height: 200px;
-  border: 2px solid red;
 }
 
 #pickban .team .picks,
@@ -28,17 +43,40 @@ select {
   justify-content: end;
 }
 
-#pickban .team .picks .pick {
-  background-color: lightslategray;
+#pickban .team .picks div {
   width: 100px;
   height: 100px;
 }
+#pickban .team .picks .pick {
+  top: -100px;
+  position: relative;
+  transition: 0.2s all ease-in;
+}
+#pickban .team .picks .back {
+  background-color: lightslategray;
+}
+
 #pickban .team .bans {
   margin-top: 30px;
 }
 
-#pickban .team .bans .ban {
-  background-color: lightcoral;
+#pickban .team .bans div {
   width: 70px;
   height: 70px;
+}
+
+#pickban .team .bans .ban {
+  top: -70px;
+  transition: 0.2s all ease-in;
+  position: relative;
+}
+
+#pickban .team .bans .back {
+  background-color: lightcoral;
+}
+
+#pickban .team .picks .pick:hover,
+#pickban .team .bans .ban:hover {
+  cursor: pointer;
+  backdrop-filter: brightness(60%);
 }

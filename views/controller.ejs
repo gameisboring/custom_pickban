@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>컨트롤러</title>
     <link href="/stylesheets/controller.css" rel="stylesheet" />
   </head>
   <body>
@@ -17,24 +17,40 @@
         <div class="blue team">
           <div class="picks">
             <% for( let index = 0; index < pick; index++ ) { %>
-            <div class="pick blue <%=index + 1 %>"></div>
+            <div class="pickGroup">
+              <div class="back"></div>
+              <div class="pick blue <%=index + 1 %>"></div>
+            </div>
             <% } %>
+            <h2>블루팀 픽</h2>
           </div>
           <div class="bans">
             <% for( let index = 0; index < ban; index++ ) { %>
-            <div class="ban blue <%=index + 1 %>"></div>
+            <div class="banGroup">
+              <div class="back"></div>
+              <div class="ban blue <%=index + 1 %>"></div>
+            </div>
             <% } %>
+            <h2>블루팀 밴</h2>
           </div>
         </div>
         <div class="red team">
           <div class="picks">
+            <h2>레드팀 픽</h2>
             <% for( let index = 0; index < pick; index++ ) { %>
-            <div class="pick red <%=index + 1 %>"></div>
+            <div class="pickGroup">
+              <div class="back"></div>
+              <div class="pick red <%=index + 1 %>"></div>
+            </div>
             <% } %>
           </div>
           <div class="bans">
+            <h2>레드팀 밴</h2>
             <% for( let index = 0; index < ban; index++ ) { %>
-            <div class="ban red <%=index + 1 %>"></div>
+            <div class="banGroup">
+              <div class="back"></div>
+              <div class="ban red <%=index + 1 %>"></div>
+            </div>
             <% } %>
           </div>
         </div>

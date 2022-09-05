@@ -36,7 +36,6 @@ router.get('/', function (req, res, next) {
  * GET /champ : champ.json
  */
 router.get('/champ', async (req, res) => {
-  console.log(typeof champions)
   res.json(champions)
 })
 
@@ -69,17 +68,14 @@ router.post(
  * GET /view
  */
 router.get('/view', (req, res) => {
-  res.render('view')
+  res.render('view', layoutConfig)
 })
 
 /**
  * GET /controller
  */
 router.get('/controller', (req, res) => {
-  res.render('controller', {
-    pick: layoutConfig.layout.pick,
-    ban: layoutConfig.layout.ban,
-  })
+  res.render('controller', layoutConfig)
 })
 
 module.exports = router

@@ -1,11 +1,11 @@
 {
   "basic": {
-    "title": "League of Starcraft",
-    "subtitle": "",
+    "title": "Game Title",
+    "subtitle": "Game SubTitle",
     "version": "1.0"
   },
   "layout": {
     "pick": 5,
-    "ban": 5
+    "ban": 2
   }
 }

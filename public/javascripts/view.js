@@ -10,8 +10,8 @@ $.ajax({
 
 const socket = io()
 
-socket.on('champ select', (image, name) => {
-  console.log()
+socket.on('champ select', (image, name, classList) => {
+  console.log(classList)
   champThumb.append(
     `<img class="thumb" src="/images/upload/${image}" alt="${image}" srcset="" /> <span>${name}</span>`
   )

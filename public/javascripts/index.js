@@ -32,6 +32,7 @@ $('#addChampBtn').on('click', () => {
     console.log(res)
     if (res.ok) {
       alert('정보 등록 성공')
+      champNameInput.val('')
       champThumbInput.val('')
       previewImg[0].src = '/images/file_upload.svg'
       preFormData.delete('')
@@ -43,6 +44,12 @@ $('#addChampBtn').on('click', () => {
 
 previewImg.click(() => {
   champThumbInput.click()
+})
+
+champNameInput.on('keyup', (key) => {
+  if (key.keyCode == 13) {
+    $('#addChampBtn').click()
+  }
 })
 
 champThumbInput.change(() => {

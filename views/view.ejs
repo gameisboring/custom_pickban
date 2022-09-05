@@ -9,6 +9,49 @@
   </head>
   <body>
     <div id="champThumbnail"></div>
+    <section id="pickban">
+      <div class="blue team">
+        <div class="picks">
+          <% for( let index = 0; index < layout.pick; index++ ) { %>
+          <div class="pickGroup">
+            <div class="back"></div>
+            <div class="pick blue <%=index + 1 %>"></div>
+          </div>
+          <% } %>
+        </div>
+        <div class="bans">
+          <% for( let index = 0; index < layout.ban; index++ ) { %>
+          <div class="banGroup">
+            <div class="back"></div>
+            <div class="ban blue <%=index + 1 %>"></div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <!-- <div class="layoutConfig">
+        <h2 class="title"><%=basic.title%></h2>
+        <h2 class="subTitle"><%=basic.subtitle%></h2>
+        <h2 class="version"><%=basic.version%></h2>
+      </div> -->
+      <div class="red team">
+        <div class="picks">
+          <% for( let index = 0; index < layout.pick; index++ ) { %>
+          <div class="pickGroup">
+            <div class="back"></div>
+            <div class="pick red <%=index + 1 %>"></div>
+          </div>
+          <% } %>
+        </div>
+        <div class="bans">
+          <% for( let index = 0; index < layout.ban; index++ ) { %>
+          <div class="banGroup">
+            <div class="back"></div>
+            <div class="ban red <%=index + 1 %>"></div>
+          </div>
+          <% } %>
+        </div>
+      </div>
+    </section>
     <script src="/javascripts/jquery.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/javascripts/view.js"></script>

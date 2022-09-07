@@ -11,8 +11,12 @@ $.ajax({
 const socket = io()
 
 socket.on('champ select', (image, name, classList) => {
-  console.log(classList)
-  champThumb.append(
-    `<img class="thumb" src="/images/upload/${image}" alt="${image}" srcset="" /> <span>${name}</span>`
+  console.log(classList[0])
+  let selector = $(
+    `#pickban .${classList[0]}.${[classList[1]]}.${[classList[2]]}`
+  )
+  selector.css(
+    'background',
+    `url("images/upload/${image}") no-repeat center top/ cover`
   )
 })

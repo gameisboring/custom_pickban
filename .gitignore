@@ -4,3 +4,4 @@ uploads/*
 public/images/*
 public/javascripts/jquery.js
 public/data/*
+/app2.ts

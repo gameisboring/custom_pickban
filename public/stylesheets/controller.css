@@ -96,21 +96,21 @@ select {
 #display {
   display: flex;
 }
-#display .champSelectDiv,
 #display .previewDiv {
   position: relative;
   padding-top: 56.25%;
   width: 100%;
   height: 0;
+  scale: 0.5;
 }
 
 iframe {
   position: absolute;
-  top: -100px;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: scale(0.5);
+  top: 100px;
+  left: 20%;
+  width: 50%;
+  height: 50%;
+  border: 50px solid #8c8c8c;
 }
 
 .modal {

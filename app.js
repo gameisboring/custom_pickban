@@ -20,20 +20,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-const cspOptions = {
-  directives: {
-    ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-    /** Remove annotation if using jquery CDN
-    'script-src': ["'self'", 'data:', 'http://code.jquery.com/'],*/
-  },
-}
-
-app.use(
-  helmet({
-    contentSecurityPolicy: cspOptions,
-    crossOriginEmbedderPolicy: false,
-  })
-)
+app.use(helmet.hidePoweredBy())
 
 app.use('/', indexRouter)
 

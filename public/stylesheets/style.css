@@ -93,3 +93,27 @@ body {
 .imgWrap:hover {
   opacity: 30%;
 }
+
+.textLink {
+  font-size: 24px;
+  color: white;
+  background-color: #1e90ff;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 5px #00000080;
+  width: fit-content;
+  padding: 0.7rem 2rem;
+  margin-bottom: 10px;
+  transition: all 0.2s ease-in;
+}
+
+.textLink:hover {
+  background-color: #1868b8;
+  box-shadow: 0px 0px 10px #00000080;
+  cursor: pointer;
+}
+
+.textLink a {
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
